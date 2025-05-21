@@ -66,13 +66,13 @@ class PostHog {
   /// Initializes the PostHog client.
   ///
   /// Must be called before using the client.
-  static Future<void> init({
+  static void init({
     required String apiKey,
     required String host,
     bool debug = false,
     String version = '1.0.0',
     http.Client? httpClient,
-  }) async {
+  }) {
     _instance = PostHog._(
       apiKey: apiKey,
       host: host,
@@ -80,8 +80,6 @@ class PostHog {
       debug: debug,
       version: version,
     );
-
-    _instance!.capture(eventName: '\$pageview');
   }
 
   /// Capture an event. This is the bread and butter of PostHog.
